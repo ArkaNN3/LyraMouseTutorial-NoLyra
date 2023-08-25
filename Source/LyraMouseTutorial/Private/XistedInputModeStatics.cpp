@@ -13,7 +13,7 @@ void UXistedInputModeStatics::XistedSetInputMode(APlayerController* PlayerContro
 	// You must give us a valid PlayerController
 	if (!IsValid(PlayerController))
 	{
-//		XISTED_ERROR_LOG(TEXT("PlayerController [%s] is not valid"), *GetNameSafe(PlayerController));
+		UE_LOG(LogTemp, Error, TEXT("PlayerController [%s] is not valid"), *GetNameSafe(PlayerController));
 		return;
 	}
 
@@ -21,7 +21,7 @@ void UXistedInputModeStatics::XistedSetInputMode(APlayerController* PlayerContro
 	const ULocalPlayer* LocalPlayer = PlayerController->GetLocalPlayer();
 	if (!LocalPlayer)
 	{
-//		XISTED_ERROR_LOG(TEXT("LocalPlayer is null"));
+		UE_LOG(LogTemp, Error, TEXT("LocalPlayer is null"));
 		return;
 	}
 
@@ -31,7 +31,7 @@ void UXistedInputModeStatics::XistedSetInputMode(APlayerController* PlayerContro
 	UCommonUIActionRouterBase* ActionRouter = LocalPlayer->GetSubsystem<UCommonUIActionRouterBase>();
 	if (!ActionRouter)
 	{
-	//	XISTED_ERROR_LOG(TEXT("Common UI Action Router subsystem is not available"));
+		UE_LOG(LogTemp, Error, TEXT("Common UI Action Router subsystem is not available"));
 		return;
 	}
 
