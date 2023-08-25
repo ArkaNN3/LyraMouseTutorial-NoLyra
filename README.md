@@ -1,4 +1,4 @@
-# Xist's Lyra Mouse Tutorial - Without LyreStarterGame code
+# Xist's Lyra Mouse Tutorial - Without LyraStarterGame code
 
 Main Branch: https://github.com/XistGG/LyraMouseTutorial
 
