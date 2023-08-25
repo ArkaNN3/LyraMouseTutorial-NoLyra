@@ -14,7 +14,7 @@ See the related
 [Dev Log](https://x157.github.io/UE5/LyraStarterGame/Tutorials/How-to-Take-Control-of-the-Mouse)
 and/or the related
 [YouTube Video](https://youtu.be/A9dp3cmCFtQ)
-for more info on How to Take Control of the Mouse in Lyra/CommonUI.
+for more info on How to Take Control of the Mouse in ~~Lyra~~/CommonUI.
 
 
 ## Setup Notes
