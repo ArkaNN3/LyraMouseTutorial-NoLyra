@@ -21,7 +21,7 @@ for more info on How to Take Control of the Mouse in ~~Lyra~~/CommonUI.
 
 ### Requirements
 
-- You must be using UE 5.2+ and ~~Lyra~~ 5.2+ source
+- You must be using UE 5.2+ and ~~Lyra 5.2+ source~~
   ~~- Lyra 5.1 and previous will not work without modifying the Engine~~
 
 ### Initial Setup (Project-specific)
