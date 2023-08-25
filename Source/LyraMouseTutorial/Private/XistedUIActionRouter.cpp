@@ -2,10 +2,7 @@
 // @see https://github.com/XistGG/LyraMouseTutorial
 
 #include "XistedUIActionRouter.h"
-
-#include "XistedLogMacros.h"
 #include "Widgets/SViewport.h"
-
 
 void UXistedUIActionRouter::ApplyUIInputConfig(const FUIInputConfig& NewConfig, bool bForceRefresh)
 {
@@ -21,8 +18,7 @@ void UXistedUIActionRouter::ApplyUIInputConfig(const FUIInputConfig& NewConfig, 
 	if (!GameViewportClient || !PC)
 	{
 		// Missing required components!  Can't do anything.
-		XISTED_ERROR_LOG(TEXT("Missing GameViewportClient (%s) or PC (%s)"),
-			BOOL2TEXT(!GameViewportClient), BOOL2TEXT(!PC));
+		UE_LOG(LogTemp, Error, TEXT("Missing GameViewportClient (%s) or PC (%s)"), !GameViewportClient ? TEXT("True") : TEXT("False"), !PC ? TEXT("True") : TEXT("False"));
 		return;
 	}
 
@@ -30,7 +26,7 @@ void UXistedUIActionRouter::ApplyUIInputConfig(const FUIInputConfig& NewConfig, 
 	if (!ViewportWidget)
 	{
 		// Missing game viewport widget!  Can't do anything.
-		XISTED_ERROR_LOG(TEXT("Failed to commit change! ViewportWidget is null."));
+		UE_LOG(LogTemp, Error, TEXT("Failed to commit change! ViewportWidget is null."));
 		return;
 	}
 
@@ -65,12 +61,12 @@ void UXistedUIActionRouter::ApplyUIInputConfig(const FUIInputConfig& NewConfig, 
 	///  Set the new config now.
 	//////////////////////////////////////////////////////////////////////////
 
-	XISTED_DISPLAY_LOG(TEXT("UIInputConfig being changed. bForceRefresh: %s"), BOOL2TEXT(bForceRefresh));
-	XISTED_DISPLAY_LOG(TEXT("\tInputMode: Previous (%s), New (%s), IgnoreLook=%s IgnoreMove=%s"),
+	UE_LOG(LogTemp, Display, TEXT("UIInputConfig being changed. bForceRefresh: %s"), bForceRefresh ? TEXT("True") : TEXT("False"));
+	UE_LOG(LogTemp, Display, TEXT("\tInputMode: Previous (%s), New (%s), IgnoreLook=%s IgnoreMove=%s"),
 		ActiveInputConfig.IsSet() ? *StaticEnum<ECommonInputMode>()->GetValueAsString(ActiveInputConfig->GetInputMode()) : TEXT("None"),
 		*StaticEnum<ECommonInputMode>()->GetValueAsString(NewConfig.GetInputMode()),
-		BOOL2TEXT(NewConfig.bIgnoreLookInput), BOOL2TEXT(NewConfig.bIgnoreMoveInput));
-
+		NewConfig.bIgnoreLookInput ? TEXT("True") : TEXT("False"), NewConfig.bIgnoreMoveInput ? TEXT("True") : TEXT("False"));
+	
 	// Set ActiveInputConfig (this is the point of this entire method :)
 	ActiveInputConfig = NewConfig;
 
@@ -164,6 +160,6 @@ void UXistedUIActionRouter::ApplyUIInputConfig(const FUIInputConfig& NewConfig, 
 
 	// Finally, broadcast OnActiveInputModeChanged
 
-	XISTED_LOG(TEXT("Broadcast Event: OnActiveInputModeChanged"));
+	UE_LOG(LogTemp, Log, TEXT("Broadcast Event: OnActiveInputModeChanged"));
 	OnActiveInputModeChanged().Broadcast(NewConfig.GetInputMode());
 }

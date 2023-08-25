@@ -2,17 +2,18 @@
 // @see https://github.com/XistGG/LyraMouseTutorial
 
 #include "XistedInputModeStatics.h"
-
-#include "XistedLogMacros.h"
 #include "XistedUIActionRouter.h"
 
+
+class APlayerController;
+class UCommonUIActionRouterBase;
 
 void UXistedInputModeStatics::XistedSetInputMode(APlayerController* PlayerController, bool bMouseVisible, bool bIgnoreLookInput, bool bIgnoreMoveInput)
 {
 	// You must give us a valid PlayerController
 	if (!IsValid(PlayerController))
 	{
-		XISTED_ERROR_LOG(TEXT("PlayerController [%s] is not valid"), *GetNameSafe(PlayerController));
+//		XISTED_ERROR_LOG(TEXT("PlayerController [%s] is not valid"), *GetNameSafe(PlayerController));
 		return;
 	}
 
@@ -20,7 +21,7 @@ void UXistedInputModeStatics::XistedSetInputMode(APlayerController* PlayerContro
 	const ULocalPlayer* LocalPlayer = PlayerController->GetLocalPlayer();
 	if (!LocalPlayer)
 	{
-		XISTED_ERROR_LOG(TEXT("LocalPlayer is null"));
+//		XISTED_ERROR_LOG(TEXT("LocalPlayer is null"));
 		return;
 	}
 
@@ -30,7 +31,7 @@ void UXistedInputModeStatics::XistedSetInputMode(APlayerController* PlayerContro
 	UCommonUIActionRouterBase* ActionRouter = LocalPlayer->GetSubsystem<UCommonUIActionRouterBase>();
 	if (!ActionRouter)
 	{
-		XISTED_ERROR_LOG(TEXT("Common UI Action Router subsystem is not available"));
+	//	XISTED_ERROR_LOG(TEXT("Common UI Action Router subsystem is not available"));
 		return;
 	}
 

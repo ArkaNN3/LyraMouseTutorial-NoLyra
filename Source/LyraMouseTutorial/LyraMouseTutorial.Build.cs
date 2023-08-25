@@ -42,8 +42,8 @@ public class LyraMouseTutorial : ModuleRules
 				// ... add private dependencies that you statically link with here ...	
 				"CommonInput",
 				"CommonUI",
-				"LyraGame",
 				"UMG",
+				"GameplayTags"
 			}
 			);
 		
